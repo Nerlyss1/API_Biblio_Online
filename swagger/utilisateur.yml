@@ -1,0 +1,11 @@
+Actions sur nos clients ! (En ajouter, les modifier)
+---
+/livres/{id}:
+   get:
+    description: Récupérer les détails d'un livre.
+    parameters:
+      - name: id
+        in: path
+        description: L'ID du livre.
+        required: true
+        type: string

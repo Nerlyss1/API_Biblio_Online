@@ -1,0 +1,75 @@
+Action sur un livre (le lire, mettre à jour, le supprimer)
+---
+/livres/{id}:
+   get:
+    description: Récupérer les détails d'un livre.
+    parameters:
+      - name: id
+        in: path
+        description: L'ID du livre.
+        required: true
+        type: string
+    responses:
+      200:
+        description: Les détails du livre.
+        schema:
+          type: object
+          properties:
+            livre:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: L'ID du livre.
+                annee:
+                  type: integer
+                  description: L'année de publication.
+                auteur:
+                  type: string
+                  description: L'auteur.
+                titre:
+                  type: string
+                  description: Le titre.
+      404:
+        description: Livre non trouvé.
+   put:
+    description: Mettre à jour les détails d'un livre.
+    parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+        description: L'ID du livre.
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          properties:
+            titre:
+              type: string
+              description: Titre du livre.
+            auteur:
+              type: string
+              description: Auteur du livre.
+            annee:
+              type: integer
+              description: Année de publication du livre.
+    responses:
+      200:
+        description: Livre mis à jour avec succès.
+      404:
+        description: Livre non trouvé.
+   delete:
+    description: Supprimer un livre.
+    parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+        description: L'ID du livre.
+    responses:
+      200:
+        description: Livre supprimé avec succès.
+      404:
+        description: Livre non trouvé.
